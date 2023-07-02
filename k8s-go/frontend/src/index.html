@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dummy Page</title>
+</head>
+<body>
+    <h1>The note!</h1>
+    <p id="message"></p>
+</body>
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://192.168.64.3:30002";
+
+    xmlhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var resp = JSON.parse(this.responseText);
+            document.getElementById("message").innerHTML = "La hora es " + resp.time + ", by: " +  resp.hostname;
+
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+</script>
+</html>

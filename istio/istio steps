@@ -1,0 +1,8 @@
+istio steps
+sidecar injection 
+
+1) kubectl label namespace default istio-injection=enabled
+
+app: http://192.168.64.4:30080/
+kiali: http://192.168.64.4:31000/kiali/console/overview?pi=15000&duration=60
+jaeger: http://192.168.64.4:31001/jaeger/search?end=1583619893702000&limit=20&lookback=1h&maxDuration&minDuration&service=staff-service.default&start=1583616293702000

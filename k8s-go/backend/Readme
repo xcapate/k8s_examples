@@ -1,0 +1,4 @@
+1) Switch to minikube docker registry -> eval $(minikube docker-env)
+2) List all images to verify you are working at minikube registry
+3) Build the image for backend app -> docker build -t k8s-hands-on -f Dockerfile .
+4) Build the frontend image -> docker build -t frontend-k8s-hands-on -f Dockerfile .

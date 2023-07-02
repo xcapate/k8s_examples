@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: hello-pod
+  labels:
+    zone: prod
+    app: external
+    version: v1
+spec:
+  containers:
+    - name: hello-ctr
+      image: nigelpoulton/pluralsight-docker-ci:latest
+      ports:
+        - containerPort: 8080
+---        
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: hello-nginx
+  labels:
+    zone: web-server
+    app: server
+    version: v1
+spec:
+  containers:    
+    - name: hello-nginx
+      image: nginx:alpine
+      ports:
+        - containerPort: 80
+---        
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: multi-cont
+  labels:
+    zone: python
+    app: server
+    version: v1
+spec:
+  containers:    
+    - name: hello-python1
+      image: python:3.6-alpine
+      command: ['sh', '-c', 'echo cont1 > index.html && python -m http.server 8081']
+      ports:
+        - containerPort: 8081
+    - name: hello-python2
+      image: python:3.6-alpine
+      command: ['sh', '-c', 'echo cont2 > index.html && python -m http.server 8082']
+      ports:
+        - containerPort: 8081
+      
